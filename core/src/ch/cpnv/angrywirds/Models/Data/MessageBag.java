@@ -7,12 +7,20 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 import java.util.ArrayList;
 
+/**
+ * This class allows you to set flash messages and display
+ */
 public class MessageBag {
     private BitmapFont font;
 
     public static String message;
     public static float duration;
 
+    /**
+     * Set message (statically) allows you to set a message from any point on the app
+     * @param msg
+     * @param time
+     */
     static public void setMessage(String msg, float time) {
         message = msg;
         duration = time;
@@ -25,6 +33,10 @@ public class MessageBag {
         font.getData().setScale(3);
     }
 
+    /**
+     * Display the actual message (and decrease his duration)
+     * @param batch
+     */
     public void draw(Batch batch) {
         if (duration > 0) {
             duration -= Gdx.graphics.getDeltaTime();

@@ -183,7 +183,6 @@ public abstract class VocProvider {
      * @param score
      */
     static public void submitResults (int vocabularyId, int score) {
-        Gdx.app.log("AJAXPOST", "Appel ajax demandé");
 
         // Gets the assignment id
         int assignmentId = 0;

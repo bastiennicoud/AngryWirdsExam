@@ -15,6 +15,9 @@ import ch.cpnv.angrywirds.Models.Stage.Button;
 import ch.cpnv.angrywirds.Providers.VocProvider;
 
 
+/**
+ * This view allows you to select a vocabulary
+ */
 public class SelectVocabulary extends GameActivity implements InputProcessor {
 
     private Texture background;
@@ -26,6 +29,7 @@ public class SelectVocabulary extends GameActivity implements InputProcessor {
         super();
         background = new Texture(Gdx.files.internal("background.png"));
         int basePos = 300;
+
         for (Vocabulary vocabulary: VocProvider.vocabularies){
             buttons.add(
                     new Button(vocabulary.getVocName(), vocabulary.getId(), WORLD_WIDTH/2-150, basePos, 300, 80, "button.png")
@@ -79,9 +83,8 @@ public class SelectVocabulary extends GameActivity implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        Gdx.app.log("TUTU", "Touched");
         Vector3 positionTouched = camera.unproject(new Vector3(screenX, screenY, 0));
-        Gdx.app.log("TUTU", screenX + "   " + screenY);
+        // Check if a button is touched
         for (Button buttonn: buttons) {
             if (buttonn.getSprite().getBoundingRectangle().contains(new Vector2(positionTouched.x, positionTouched.y))) {
                 AngryWirds.gameActivityManager.push(new Play(buttonn.getId()));

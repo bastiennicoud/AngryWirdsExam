@@ -14,6 +14,9 @@ import ch.cpnv.angrywirds.Models.Data.MessageBag;
 import ch.cpnv.angrywirds.Models.Stage.Button;
 import ch.cpnv.angrywirds.Providers.VocProvider;
 
+/**
+ * This view allows you to select an assignment
+ */
 public class SelectAssignment extends GameActivity implements InputProcessor {
 
     private Texture background;
@@ -88,9 +91,8 @@ public class SelectAssignment extends GameActivity implements InputProcessor {
 
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        Gdx.app.log("TUTU", "Touched");
         Vector3 positionTouched = camera.unproject(new Vector3(screenX, screenY, 0));
-        Gdx.app.log("TUTU", screenX + "   " + screenY);
+        // Check if the button is touched
         for (Button buttonn: buttons) {
             if (buttonn.getSprite().getBoundingRectangle().contains(new Vector2(positionTouched.x, positionTouched.y))) {
                 AngryWirds.gameActivityManager.push(new Play(buttonn.getId()));
